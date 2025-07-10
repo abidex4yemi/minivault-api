@@ -22,7 +22,7 @@ const streamDummyResponse = async (prompt, response, logFn) => {
 
   response.write(`data: [DONE]\n\n`);
   response.end();
-  logFn(completeResponse);
+  logFn(prompt, completeResponse);
 };
 
 module.exports = { streamDummyResponse };

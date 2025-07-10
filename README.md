@@ -105,3 +105,5 @@ All prompt/response pairs are logged in `src/logs/log.jsonl` as JSONL (one JSON 
 5. **Dockerization:** Provide a Dockerfile for easy deployment.
 6. **Environment Variables:** Use `.env` for configuration (port, log path, etc.).
 7. **Health Check Endpoint:** Add a simple `/health` endpoint for monitoring.
+8. **Handling Model Cutoff and Newer Data (On-Prem):** Since the API uses pretrained models with a knowledge cutoff, consider on-premises strategies for dealing with questions about events or information post-training (e.g., integrating local retrieval-augmented generation, on-prem web/data search, or providing clear user feedback about limitations).
+9. **Post-Training Updates & Deep Thinking (On-Prem):** Explore ways to supplement the model with up-to-date information, enable plugin-like extensions, or implement mechanisms for deeper reasoning and multi-step thinking—ensuring all enhancements remain on-premises and do not rely on external cloud services.

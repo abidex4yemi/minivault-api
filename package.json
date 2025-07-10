@@ -1,0 +1,18 @@
+{
+  "name": "minivault-api",
+  "version": "1.0.0",
+  "description": "Lightweight local REST API",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abidex4yemi/minivault-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

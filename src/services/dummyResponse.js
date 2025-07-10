@@ -1,13 +1,18 @@
 const streamDummyResponse = async (prompt, response, logFn) => {
   const tokens = [
     'Hello',
+    ' ',
     'there',
     '!',
     ' ',
     'This',
+    ' ',
     'is',
+    ' ',
     'a',
+    ' ',
     'test',
+    ' ',
     'response',
     '.',
   ];

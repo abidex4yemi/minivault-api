@@ -3,13 +3,17 @@ const router = express.Router();
 
 const { streamDummyResponse } = require('../services/dummyResponse.js');
 const { logResponse } = require('../utils/logger');
+const { streamFromOllama } = require('../services/ollamaService.js');
 
 const SUPPORTED_MODELS = ['mistral', 'llama3'];
+
 router.post('/', async (req, res) => {
-  const { model = 'dummy', prompt } = req?.body;
+  let { model = 'dummy', prompt } = req?.body;
   if (!prompt) {
     return res.status(400).json({ error: 'Prompt is required.' });
   }
+
+  model = model.toLowerCase().trim();
 
   if (model != 'dummy' && !SUPPORTED_MODELS.includes(model)) {
     return res.status(400).json({
@@ -19,15 +23,11 @@ router.post('/', async (req, res) => {
     });
   }
 
-  res.set({
-    'Content-Type': 'text/event-stream',
-    'Cache-Control': 'no-cache',
-    Connection: 'keep-alive',
-  });
-
   const useDummy = !SUPPORTED_MODELS.includes(model);
   if (useDummy) {
-    await streamDummyResponse(prompt, res, logResponse);
+    await streamDummyResponse(prompt, model, res, logResponse);
+  } else {
+    await streamFromOllama(prompt, model, res, logResponse);
   }
 });
 

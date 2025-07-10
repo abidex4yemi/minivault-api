@@ -11,8 +11,6 @@ const logResponse = (prompt, response) => {
     timestamp,
   };
 
-  console.log(JSON.stringify(logEntry));
-
   fs.appendFileSync(logFilePath, `${JSON.stringify(logEntry)}\n`);
 };
 
